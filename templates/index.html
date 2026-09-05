@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NetScan | Network Security Scanner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🔐 NetScan</h1>
+            <p>Network Security & TCP Port Scanner</p>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Scanner Card -->
+        <section class="scanner-card">
+
+            <h2>Start Network Scan</h2>
+
+            <p class="description">
+                Enter a target IP address or hostname and specify the TCP port range.
+            </p>
+
+            <!-- Target -->
+            <div class="form-group">
+                <label for="target">Target IP / Hostname</label>
+
+                <input
+                    type="text"
+                    id="target"
+                    placeholder="Example: 127.0.0.1"
+                >
+            </div>
+
+
+            <!-- Port Range -->
+            <div class="port-row">
+
+                <div class="form-group">
+                    <label for="start-port">Start Port</label>
+
+                    <input
+                        type="number"
+                        id="start-port"
+                        placeholder="1"
+                        min="1"
+                        max="65535"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="end-port">End Port</label>
+
+                    <input
+                        type="number"
+                        id="end-port"
+                        placeholder="1000"
+                        min="1"
+                        max="65535"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Scan Button -->
+            <button id="scan-button">
+                🚀 Start Scan
+            </button>
+
+        </section>
+
+
+        <!-- Results Section -->
+        <section class="results-card">
+
+            <h2>Scan Results</h2>
+
+            <div id="results-container">
+
+            <p class="no-results">
+                 No scan results yet.
+            </p>
+
+        </div>
+
+<div id="report-container"></div>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span class="stat-label">Ports Scanned</span>
+                <span id="ports-scanned" class="stat-value">0</span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">Open Ports</span>
+                <span id="open-ports" class="stat-value">0</span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">Scan Time</span>
+                <span id="scan-time" class="stat-value">0 sec</span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            NetScan &copy; 2026 | Cybersecurity Network Scanner
+        </p>
+
+        <p class="warning">
+            ⚠️ Only scan systems you own or have explicit authorization to test.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
