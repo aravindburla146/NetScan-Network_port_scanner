@@ -1,10 +1,5 @@
 # 🔐 NetScan — Network Security & TCP Port Scanner
 
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-Web%20Interface-000000?style=for-the-badge&logo=flask&logoColor=white)
-![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Network%20Security-EF4444?style=for-the-badge&logo=hackthebox&logoColor=white)
-![TCP](https://img.shields.io/badge/TCP-Port%20Scanning-0284C7?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
 
 **NetScan** is a Python-based network security tool designed to identify open TCP ports and their commonly associated services on authorized systems.
 
@@ -157,3 +152,7 @@ The web interface limits a single scan request to **5,000 ports**.
         │  Web Interface  │    │   CSV Report    │
         │  Results Table  │    │    Download     │
         └─────────────────┘    └─────────────────┘
+```
+---
+
+### 🔐 Built with ❤️ for Cybersecurity. Scan Smart. Stay Secure. Keep Learning.
