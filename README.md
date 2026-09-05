@@ -1,55 +1,159 @@
 # 🔐 NetScan — Network Security & TCP Port Scanner
 
-NetScan is a Python-based TCP network port scanner designed to identify open TCP ports and their commonly associated services on authorized systems.
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web%20Interface-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Network%20Security-EF4444?style=for-the-badge&logo=hackthebox&logoColor=white)
+![TCP](https://img.shields.io/badge/TCP-Port%20Scanning-0284C7?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
 
-The project provides both a command-line scanner and a Flask-based web interface, allowing users to specify a target IP address or hostname and scan a custom range of TCP ports.
+**NetScan** is a Python-based network security tool designed to identify open TCP ports and their commonly associated services on authorized systems.
+
+The project combines a **Python socket-based scanning engine** with a **Flask web interface**, providing an easy-to-use interface for performing custom TCP port scans, viewing scan statistics, identifying common services, and exporting results as CSV reports.
+
+---
+
+## 📸 NetScan Preview
+
+![NetScan Interface](screenshots/Screenshot%202026-09-05%20162123.png)
+
+*NetScan web interface for TCP port scanning and network security analysis.*
+
+---
 
 ## 🎯 Project Purpose
 
-The purpose of NetScan is to demonstrate the fundamentals of network reconnaissance and TCP port scanning using Python sockets.
+The purpose of NetScan is to provide a simple and educational network scanning tool that demonstrates how TCP port scanning works at the socket-programming level.
 
-The project focuses on understanding how TCP connections can be used to determine whether network services are accessible on specific ports.
+The project was developed to understand practical concepts including:
+
+- TCP connections
+- Network ports
+- Socket programming
+- Concurrent scanning
+- Service identification
+- Input validation
+- Flask web applications
+- Scan result processing
+- CSV report generation
+
+NetScan is intended for **cybersecurity education, authorized security testing, and network administration**.
+
+---
 
 ## ✨ Features
 
-- TCP port scanning using Python sockets
-- Concurrent port scanning for improved performance
-- Custom port-range selection
-- IP address and hostname validation
-- TCP service identification
-- Scan statistics
-- Web-based interface using Flask
-- CSV report generation
-- Input validation and error handling
-- Responsive cybersecurity-themed interface
+### 🔍 TCP Port Scanning
 
-## ⚠️ Ethical Use
+- Scan individual TCP ports or custom port ranges
+- Supports ports from `1` to `65535`
+- Uses Python TCP sockets
+- Detects open and closed ports
 
-NetScan should only be used against systems that you own or have explicit authorization to test.
+### ⚡ Concurrent Scanning
 
-Unauthorized port scanning may violate organizational policies or applicable laws.
+- Uses Python `ThreadPoolExecutor`
+- Scans multiple ports concurrently
+- Significantly improves scanning speed compared with sequential scanning
 
-## 🛠️ Technologies Used
+### 🧩 Service Identification
 
-- **Python** — Core programming language
-- **Python Socket Library** — TCP connection and port scanning
-- **ThreadPoolExecutor** — Concurrent port scanning
-- **Flask** — Web application backend
-- **HTML5** — Web interface structure
-- **CSS3** — User interface styling
-- **JavaScript** — Frontend interaction and API communication
-- **CSV** — Scan report generation
+- Identifies commonly associated TCP services
+- Uses Python's built-in service database
+- Displays `Unknown` when a service cannot be identified
 
+### 🌐 Web Interface
 
-### ⚠️ One important thing
+- Flask-powered web application
+- Simple cybersecurity-themed interface
+- Target IP/hostname input
+- Custom start and end port selection
+- Real-time scan status
 
-Because your `reports/` folder contains generated CSV files, we should **not commit those reports to GitHub** unless you specifically want sample reports there.
+### 📊 Scan Statistics
 
-Your `.gitignore` should eventually contain:
+Displays:
+
+- Total ports scanned
+- Number of open ports
+- Scan duration
+- Detected services
+
+### 📥 CSV Reporting
+
+- Automatically generates a CSV report after each scan
+- Includes target, port, status, and service
+- Download reports directly from the web interface
+
+### 🛡️ Input Validation
+
+NetScan validates:
+
+- IP addresses
+- Hostnames
+- Port numbers
+- Port ranges
+- Maximum scan range
+
+The web interface limits a single scan request to **5,000 ports**.
+
+---
+
+## 🖥️ Technology Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Core scanning engine |
+| Socket | TCP port scanning |
+| ThreadPoolExecutor | Concurrent scanning |
+| Flask | Web application backend |
+| HTML5 | Web interface structure |
+| CSS3 | User interface styling |
+| JavaScript | Frontend interaction and API requests |
+| CSV | Scan report generation |
+
+---
+
+## 🏗️ System Architecture
 
 ```text
-venv/
-__pycache__/
-*.pyc
-reports/*.csv
-
+                 ┌──────────────────────┐
+                 │      Web Browser     │
+                 │   HTML/CSS/JS UI     │
+                 └──────────┬───────────┘
+                            │
+                            │ HTTP Request
+                            ▼
+                 ┌──────────────────────┐
+                 │      Flask App       │
+                 │       app.py         │
+                 └──────────┬───────────┘
+                            │
+                            │ Scan Request
+                            ▼
+                 ┌──────────────────────┐
+                 │    Scanner Engine    │
+                 │     scanner.py       │
+                 └──────────┬───────────┘
+                            │
+                 ┌──────────┴───────────┐
+                 │                      │
+                 ▼                      ▼
+        ┌─────────────────┐    ┌─────────────────┐
+        │  TCP Sockets    │    │ Concurrent Scan │
+        │  Port Testing   │    │ Thread Pool     │
+        └────────┬────────┘    └────────┬────────┘
+                 │                      │
+                 └──────────┬───────────┘
+                            ▼
+                 ┌──────────────────────┐
+                 │    Scan Results      │
+                 │ Open / Closed /      │
+                 │ Service Information  │
+                 └──────────┬───────────┘
+                            │
+                 ┌──────────┴───────────┐
+                 ▼                      ▼
+        ┌─────────────────┐    ┌─────────────────┐
+        │  Web Interface  │    │   CSV Report    │
+        │  Results Table  │    │    Download     │
+        └─────────────────┘    └─────────────────┘
