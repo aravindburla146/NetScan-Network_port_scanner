@@ -40,46 +40,7 @@ Unauthorized port scanning may violate organizational policies or applicable law
 - **JavaScript** — Frontend interaction and API communication
 - **CSV** — Scan report generation
 
-## 🏗️ System Architecture
 
-NetScan follows a simple client-server architecture:
-
-```text
-┌─────────────────────────┐
-│       Web Browser       │
-│     HTML / CSS / JS     │
-└────────────┬────────────┘
-             │
-             │ HTTP Request
-             ▼
-┌─────────────────────────┐
-│       Flask Backend     │
-│         app.py          │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      Scanner Engine     │
-│       scanner.py        │
-│                         │
-│  Python Socket + TCP    │
-│  Concurrent Scanning    │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      Target System      │
-│     TCP Port Range      │
-└────────────┬────────────┘
-             │
-             ▼
-      Scan Results
-             │
-       ┌─────┴─────┐
-       ▼           ▼
- Web Interface   CSV Report
-
- 
 ### ⚠️ One important thing
 
 Because your `reports/` folder contains generated CSV files, we should **not commit those reports to GitHub** unless you specifically want sample reports there.
